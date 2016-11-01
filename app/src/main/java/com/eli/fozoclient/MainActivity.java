@@ -7,6 +7,8 @@ import android.view.View;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import model.Person;
+
 /**
  * Created by Elias on 10/29/2016.
  */
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void makeGETRequest(View view) {
+
+        Person person = new Person();
+
         // The connection URL
         final String url = "http://fozotest.appspot.com/people";
 

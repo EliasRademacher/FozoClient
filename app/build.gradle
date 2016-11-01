@@ -8,6 +8,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'org.springframework.android:spring-android-rest-template:2.0.0.BUILD-SNAPSHOT'
+    compile group: 'com.eli.fozo', name: 'fozo-stuff', version: '1.0-SNAPSHOT'
 }
 
 android {
