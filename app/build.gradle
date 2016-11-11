@@ -9,7 +9,9 @@ repositories {
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile group: 'com.mcxiaoke.volley', name: 'library', version: '1.0.19'
-    compile files('libs/fozo-stuff-1.0-SNAPSHOT.jar')
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.4'
+    compile "com.eli.fozo:fozo-stuff:1.0-SNAPSHOT"
+//    compile files('libs/fozo-stuff-1.0-SNAPSHOT.jar')
 }
 
 android {
@@ -41,6 +43,9 @@ android {
         exclude 'META-INF/license.txt'
         exclude 'META-INF/dependencies.txt'
         exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/spring.schemas'
+        exclude 'META-INF/spring.tooling'
+        exclude 'META-INF/spring.handlers'
     }
 
 }

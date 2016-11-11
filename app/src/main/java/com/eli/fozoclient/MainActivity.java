@@ -12,6 +12,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+
 import model.Person;
 
 /**
@@ -32,15 +36,23 @@ public class MainActivity extends AppCompatActivity {
 
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://fozotest.appspot.com/";
+        String url ="http://fozotest.appspot.com/people/stevie_wonder";
 
         /* Request a string response from the provided URL. */
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        mTextView.setText("Response is: "+ response.substring(0, 500));
+                        ObjectMapper mapper = new ObjectMapper();
+
+                        try {
+                            Person person = mapper.readValue(response, Person.class);
+                        } catch (IOException e) {
+                            System.out.println(e.getMessage() + "\n");
+                            e.printStackTrace();
+                        }
+
+                        mTextView.setText("It looks like that worked!");
                     }
                 }, new Response.ErrorListener() {
             @Override
