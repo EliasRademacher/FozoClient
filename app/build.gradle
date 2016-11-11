@@ -8,6 +8,7 @@ repositories {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
+    compile group: 'com.mcxiaoke.volley', name: 'library', version: '1.0.19'
     compile files('libs/fozo-stuff-1.0-SNAPSHOT.jar')
 }
 
