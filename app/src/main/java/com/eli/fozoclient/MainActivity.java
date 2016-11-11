@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://www.google.com";
+        String url ="http://fozotest.appspot.com/";
 
         /* Request a string response from the provided URL. */
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                System.out.println(error.getMessage());
                 mTextView.setText("That didn't work!");
             }
         });
