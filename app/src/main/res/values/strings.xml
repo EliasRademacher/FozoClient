@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">FozoClient</string>
+    <string name="app_name">Fozo</string>
     <string name="make_get_request">Make GET Request</string>
 </resources>
