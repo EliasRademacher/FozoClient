@@ -3,6 +3,7 @@ package com.eli.fozoclient;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -36,11 +37,13 @@ public class MainActivity extends AppCompatActivity {
         final TextView emailView = (TextView) findViewById(R.id.person_email);
         final TextView birthdateView = (TextView) findViewById(R.id.person_birthdate);
 
-        final TextView mTextView = (TextView) view;
+        final EditText userNameQueryView = (EditText) findViewById(R.id.person_username_query);
+        String userNameQuery = userNameQueryView.getText().toString();
+
 
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://fozotest.appspot.com/people/stevie_wonder";
+        String url ="http://fozotest.appspot.com/people/" + userNameQuery;
 
         /* Request a string response from the provided URL. */
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

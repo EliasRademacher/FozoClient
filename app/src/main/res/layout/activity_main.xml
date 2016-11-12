@@ -4,6 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/person_username_query"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:hint="@string/person_username_query"
+        android:inputType="text"/>
+
     <Button
         android:id="@+id/my_button"
         android:layout_width="match_parent"

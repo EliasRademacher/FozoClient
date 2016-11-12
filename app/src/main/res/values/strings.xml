@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Fozo</string>
     <string name="make_get_request">Make GET Request</string>
+    <string name="person_username_query">Enter a username</string>
 </resources>
