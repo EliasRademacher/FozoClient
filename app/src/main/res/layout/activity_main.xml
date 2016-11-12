@@ -6,13 +6,23 @@
 
     <Button
         android:id="@+id/my_button"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:text="@string/make_get_request"
         android:onClick="getPerson"/>
 
     <TextView
-        android:id="@+id/person_result_view"
+        android:id="@+id/person_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/person_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/person_birthdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

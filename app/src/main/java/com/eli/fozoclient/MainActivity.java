@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void getPerson(View view) {
 
-        final TextView personResultView = (TextView) findViewById(R.id.person_result_view);
+        final TextView userNameView = (TextView) findViewById(R.id.person_username);
+        final TextView emailView = (TextView) findViewById(R.id.person_email);
+        final TextView birthdateView = (TextView) findViewById(R.id.person_birthdate);
 
         final TextView mTextView = (TextView) view;
 
@@ -47,20 +49,23 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         ObjectMapper mapper = new ObjectMapper();
 
+                        Person person = null;
                         try {
-                            Person person = mapper.readValue(response, Person.class);
+                            person = mapper.readValue(response, Person.class);
                         } catch (IOException e) {
                             System.out.println(e.getMessage() + "\n");
                             e.printStackTrace();
                         }
 
-                        personResultView.setText("It looks like that worked!");
+                        userNameView.setText("Retreived " + person.getUserName());
+                        emailView.setText("Email: " + person.getEmail());
+                        birthdateView.setText("Birthdate: " + person.getBirthDate().toString());
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.println(error.getMessage());
-                personResultView.setText("That didn't work!");
+                userNameView.setText("That didn't work!");
             }
         });
 
