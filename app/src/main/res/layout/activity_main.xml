@@ -11,4 +11,10 @@
         android:text="@string/make_get_request"
         android:onClick="getPerson"/>
 
+    <TextView
+        android:id="@+id/person_result_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
 </LinearLayout>

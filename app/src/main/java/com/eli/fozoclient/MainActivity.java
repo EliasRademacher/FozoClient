@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void getPerson(View view) {
 
+        final TextView personResultView = (TextView) findViewById(R.id.person_result_view);
+
         final TextView mTextView = (TextView) view;
 
         /* Instantiate the RequestQueue. */
@@ -52,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        mTextView.setText("It looks like that worked!");
+                        personResultView.setText("It looks like that worked!");
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.println(error.getMessage());
-                mTextView.setText("That didn't work!");
+                personResultView.setText("That didn't work!");
             }
         });
 
