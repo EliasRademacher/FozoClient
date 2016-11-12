@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void makeGETRequest(View view) {
+    public void getPerson(View view) {
 
         final TextView mTextView = (TextView) view;
 

@@ -9,6 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:text="@string/make_get_request"
-        android:onClick="makeGETRequest"/>
+        android:onClick="getPerson"/>
 
 </LinearLayout>
