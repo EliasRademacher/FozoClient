@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/make_get_request"
-        android:onClick="getPerson"/>
+        android:onClick="getUser"/>
 
     <TextView
         android:id="@+id/person_username"

@@ -20,9 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:id="@+id/email"
+        android:id="@+id/userId"
         android:inputType="textEmailAddress"
-        android:hint="Email" />
+        android:hint="Username" />
 
     <EditText
         android:layout_width="match_parent"
@@ -39,5 +39,6 @@
         android:layout_weight="0.08"
         android:text="Login"
         android:background="@android:color/holo_orange_dark"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:onClick="authenticateUser" />
 </LinearLayout>

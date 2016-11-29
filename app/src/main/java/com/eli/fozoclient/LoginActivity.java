@@ -22,16 +22,29 @@ import model.Person;
 /**
  * Created by Elias on 10/29/2016.
  */
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login);
     }
 
-    public void getPerson(View view) {
+    public void authenticateUser(View view) {
+        final TextView userIdView = (TextView) findViewById(R.id.userId);
+        String userId = userIdView.getText().toString();
+
+        final TextView passwordView = (TextView) findViewById(R.id.password);
+        String password = passwordView.getText().toString();
+
+        /* Instantiate the RequestQueue. */
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://fozo-145621.appspot.com/accounts/login" + userId;
+
+    }
+
+    public void getUser(View view) {
 
         final TextView userNameView = (TextView) findViewById(R.id.person_username);
         final TextView emailView = (TextView) findViewById(R.id.person_email);
