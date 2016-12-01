@@ -41,4 +41,16 @@
         android:background="@android:color/holo_orange_dark"
         android:textSize="24sp"
         android:onClick="authenticateUser" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/responseMessage"
+        android:layout_weight="0.08" />
 </LinearLayout>
