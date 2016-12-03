@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,6 +25,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -191,22 +193,35 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, requestBody, new Response.Listener<JSONObject>() {
+        JsonObjectRequestWithHeaders jsObjRequest = new JsonObjectRequestWithHeaders(
+                Request.Method.POST,
+                url,
+                requestBody,
+                new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        responseMessageView.setText("Response: " + response.toString());
-                    }
-                }, new Response.ErrorListener() {
 
+                        String message = "";
+                        try {
+                            message = response.getString("message");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        responseMessageView.setText("Response: " + message);
+                    }
+                },
+
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         responseMessageView.setText("Error: " + error.getMessage());
                         error.printStackTrace();
 
                     }
-                });
+                }
+        );
+
 
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
