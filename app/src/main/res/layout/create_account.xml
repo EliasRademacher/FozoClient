@@ -6,11 +6,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="TextView"
+        android:text="Create an Account"
         android:layout_width="match_parent"
         android:id="@+id/create_account_instructions"
         android:layout_height="50dp"
-        tools:text="Create an Account"
         android:layout_weight="0.02"
         android:textSize="24sp"
         android:textAlignment="center"
@@ -56,10 +55,17 @@
         android:layout_height="10dp" />
 
     <TextView
-        android:text="TextView"
+        android:text="Already have an account? Login!"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/responseMessage"
-        android:layout_weight="0.08" />
+        android:layout_weight="0.03" />
+
+    <Button
+        android:text="Go to login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goto_login_button"
+        android:layout_weight="0.02" />
 
 </LinearLayout>
