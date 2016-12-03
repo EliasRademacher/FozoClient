@@ -16,8 +16,8 @@ import java.util.Map;
 
 public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
 
-    private String token;
-    private String userId;
+    private static String token;
+    private static String userId;
 
 
     public JsonObjectRequestWithHeaders(int post, String url, String requestBody, Response.Listener<JSONObject> message, Response.ErrorListener errorListener) {
@@ -45,6 +45,15 @@ public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
 
         HeaderKeeper.getInstance().setHeaders(response.headers);
 
+
+        /* TODO: I could store the token & userID in this class, or in the singleton class. */
+        if (null == token) {
+            token = response.headers.get("token");
+        }
+
+        if (null == userId) {
+            userId = response.headers.get("userId");
+        }
 
 
         return super.parseNetworkResponse(response);

@@ -96,73 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void authenticateUser1(View view) {
-        final TextView userIdView = (TextView) findViewById(R.id.userId);
-        String userId = userIdView.getText().toString();
 
-        final TextView passwordView = (TextView) findViewById(R.id.password);
-        String password = passwordView.getText().toString();
-
-        /* Instantiate the RequestQueue. */
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://fozo-145621.appspot.com/accounts/login";
-
-        Account account = new Account(userId);
-        account.setPassword(password);
-    }
-
-    /* Found at https://gist.github.com/mombrea/7250835 */
-    public void authenticateUser2(View view) {
-
-        final TextView userIdView = (TextView) findViewById(R.id.userId);
-        final String userId = userIdView.getText().toString();
-
-        final TextView passwordView = (TextView) findViewById(R.id.password);
-        final String password = passwordView.getText().toString();
-
-        /* Instantiate the RequestQueue. */
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://fozo-145621.appspot.com/accounts/login";
-
-        final Account account = new Account(userId);
-        account.setPassword(password);
-
-        StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                System.out.println("request completed:\n");
-                System.out.println(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        }) {
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                return super.getBody();
-            }
-
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("userId", userId);
-                params.put("password", account.getPassword());
-
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("Content-Type", "application/json; charset=utf-8");
-                return params;
-            }
-        };
-
-        queue.add(sr);
-    }
 
 
 
@@ -194,6 +128,8 @@ public class LoginActivity extends AppCompatActivity {
             createResponseListener(responseMessageView),
             createErrorListener(responseMessageView)
         );
+
+
 
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
