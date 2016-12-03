@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,38 +15,21 @@ import com.android.volley.toolbox.Volley;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import model.Account;
 import model.Person;
 
-/**
- * Created by Elias on 10/29/2016.
- */
 public class LoginActivity extends AppCompatActivity {
-
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     public void getUser(View view) {
@@ -96,10 +78,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
     public void authenticateUser(View view) {
         final TextView userIdView = (TextView) findViewById(R.id.userId);
         final String userId = userIdView.getText().toString();
@@ -129,8 +107,6 @@ public class LoginActivity extends AppCompatActivity {
             createErrorListener(responseMessageView)
         );
 
-
-
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(request);
@@ -158,7 +134,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 view.setText("Error: " + error.getMessage());
                 error.printStackTrace();
-
             }
         };
     }

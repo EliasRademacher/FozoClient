@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
-        android:id="@+id/login_instructions"
+        android:id="@+id/create_account_instructions"
         android:layout_height="50dp"
-        tools:text="Enter you Gmail email address and password to login"
-        android:layout_weight="0.08"
+        tools:text="Create an Account"
+        android:layout_weight="0.02"
         android:textSize="24sp"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark" />
@@ -20,8 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:id="@+id/userId"
-        android:inputType="textEmailAddress"
+        android:id="@+id/newUserId"
+        android:inputType="text"
         android:hint="Username" />
 
     <EditText
@@ -29,23 +29,31 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/password"
+        android:id="@+id/newPassword"
         android:hint="Password" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/newPasswordConfirmation"
+        android:hint="Confirm Password" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:id="@+id/login_btn"
-        android:layout_weight="0.17"
-        android:text="Login"
+        android:id="@+id/create_account_btn"
+        android:layout_weight="0.08"
+        android:text="Create Account"
         android:background="@android:color/holo_orange_dark"
         android:textSize="24sp"
-        android:onClick="authenticateUser" />
+        android:onClick="createAccount"
+        android:layout_height="20dp" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_weight="0.15" />
+        android:layout_weight="0.07"
+        android:layout_height="10dp" />
 
     <TextView
         android:text="TextView"
@@ -53,4 +61,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/responseMessage"
         android:layout_weight="0.08" />
+
 </LinearLayout>

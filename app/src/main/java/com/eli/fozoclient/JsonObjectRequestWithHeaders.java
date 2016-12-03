@@ -10,9 +10,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Elias on 12/2/2016.
- */
 
 public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
 
@@ -62,8 +59,8 @@ public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String>  params = new HashMap<String, String>();
-        params.put("token", this.token);
-        params.put("userId", this.userId);
+        params.put("token", token);
+        params.put("userId", userId);
         return params;
     }
 
