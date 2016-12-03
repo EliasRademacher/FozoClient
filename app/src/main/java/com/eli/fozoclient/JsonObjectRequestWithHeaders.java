@@ -17,8 +17,8 @@ import java.util.Map;
 public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
 
     private String token;
-
     private String userId;
+
 
     public JsonObjectRequestWithHeaders(int post, String url, String requestBody, Response.Listener<JSONObject> message, Response.ErrorListener errorListener) {
         super(post, url, requestBody, message, errorListener);
@@ -43,6 +43,9 @@ public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
 
+        HeaderKeeper.getInstance().setHeaders(response.headers);
+
+
 
         return super.parseNetworkResponse(response);
     }
@@ -52,8 +55,9 @@ public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
         Map<String, String>  params = new HashMap<String, String>();
         params.put("token", this.token);
         params.put("userId", this.userId);
-
         return params;
     }
+
+
 
 }

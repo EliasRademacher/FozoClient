@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
         final String password = passwordView.getText().toString();
 
         final TextView responseMessageView = (TextView) findViewById(R.id.responseMessage);
-        String url = "http://fozo-145621.appspot.com/accounts/login";
+        final String url = "http://fozo-145621.appspot.com/accounts/login";
 
         ObjectMapper objectMapper = new ObjectMapper();
         Account account = new Account(userId);
@@ -187,18 +187,17 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequestWithHeaders jsObjRequest = new JsonObjectRequestWithHeaders(
-                Request.Method.POST,
-                url,
-                requestBody,
-                createResponseListener(responseMessageView),
-                createErrorListener(responseMessageView)
+        JsonObjectRequestWithHeaders request = new JsonObjectRequestWithHeaders(
+            Request.Method.POST,
+            url,
+            requestBody,
+            createResponseListener(responseMessageView),
+            createErrorListener(responseMessageView)
         );
-
 
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
-        queue.add(jsObjRequest);
+        queue.add(request);
     }
 
 
@@ -206,7 +205,6 @@ public class LoginActivity extends AppCompatActivity {
         return new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
                 String message = "";
                 try {
                     message = response.getString("message");
