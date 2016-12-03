@@ -138,4 +138,8 @@ public class LoginActivity extends AppCompatActivity {
         };
     }
 
+    public void redirectToCreateAccount(View view) {
+        setContentView(R.layout.create_account);
+    }
+
 }
