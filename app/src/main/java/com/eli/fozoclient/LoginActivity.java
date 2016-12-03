@@ -1,7 +1,5 @@
 package com.eli.fozoclient;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,20 +7,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONException;
@@ -197,35 +191,42 @@ public class LoginActivity extends AppCompatActivity {
                 Request.Method.POST,
                 url,
                 requestBody,
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        String message = "";
-                        try {
-                            message = response.getString("message");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        responseMessageView.setText("Response: " + message);
-                    }
-                },
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        responseMessageView.setText("Error: " + error.getMessage());
-                        error.printStackTrace();
-
-                    }
-                }
+                createResponseListener(responseMessageView),
+                createErrorListener(responseMessageView)
         );
 
 
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jsObjRequest);
+    }
+
+
+    private Response.Listener<JSONObject> createResponseListener(final TextView view) {
+        return new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                String message = "";
+                try {
+                    message = response.getString("message");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                view.setText("Response: " + message);
+            }
+        };
+    }
+
+    private Response.ErrorListener createErrorListener(final TextView view) {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                view.setText("Error: " + error.getMessage());
+                error.printStackTrace();
+
+            }
+        };
     }
 
 }
