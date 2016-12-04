@@ -1,5 +1,6 @@
 package com.eli.fozoclient;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -139,7 +140,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void redirectToCreateAccount(View view) {
-        setContentView(R.layout.create_account);
+        Intent intent = new Intent(this, CreateAccountActivity.class);
+        this.startActivity(intent);
     }
 
 }
