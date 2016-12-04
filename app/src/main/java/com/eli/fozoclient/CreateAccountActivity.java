@@ -99,7 +99,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         };
     }
 
-    public void redirectToLogin(View view) {
+    public void startLoginActivity(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         this.startActivity(intent);
     }

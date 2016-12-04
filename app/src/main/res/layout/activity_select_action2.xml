@@ -15,7 +15,8 @@
         android:text="View All People"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/view_all_people" />
+        android:id="@+id/view_all_people"
+        android:onClick="startViewAllPeopleActivity" />
 
     <Button
         android:text="View All Challenges"
@@ -30,7 +31,13 @@
         android:id="@+id/add_challenge" />
 
     <Button
-        android:text="Update Account"
+        android:text="View Your Challenges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/view_my_challenges" />
+
+    <Button
+        android:text="Update Your Account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/update_account" />
