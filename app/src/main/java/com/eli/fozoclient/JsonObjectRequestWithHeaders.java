@@ -39,11 +39,8 @@ public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
 
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-
         HeaderKeeper.getInstance().setHeaders(response.headers);
 
-
-        /* TODO: I could store the token & userID in this class, or in the singleton class. */
         if (null == token) {
             token = response.headers.get("token");
         }
@@ -51,7 +48,6 @@ public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
         if (null == userId) {
             userId = response.headers.get("userId");
         }
-
 
         return super.parseNetworkResponse(response);
     }

@@ -14,17 +14,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
 
 public class ViewAllPeopleActivity extends ListActivity {
 
-    /* List of array strings which will serve as list items. */
     ArrayList<String> listItems = new ArrayList<>();
 
-    /* Defining a string adapter which will handle the data of the listview. */
     ArrayAdapter<String> adapter;
-
-    /* Recording how many times the button has been clicked. */
-    int clickCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +37,6 @@ public class ViewAllPeopleActivity extends ListActivity {
 
     /* Method which will handle dynamic insertion. */
     public void viewAllPeople() {
-//        final ListView accountList
-//                = (ListView) findViewById(R.id.account_list);
-//        accountList.setAdapter();
-
-
-
         /* Instantiate the RequestQueue. */
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://fozo-145621.appspot.com/accounts";
@@ -62,9 +53,6 @@ public class ViewAllPeopleActivity extends ListActivity {
         stringRequest.setToken(HeaderKeeper.getInstance().getToken());
         stringRequest.setUserId(HeaderKeeper.getInstance().getUserId());
 
-        String token = stringRequest.getToken();
-        String userId = stringRequest.getUserId();
-
         queue.add(stringRequest);
     }
 
@@ -73,17 +61,11 @@ public class ViewAllPeopleActivity extends ListActivity {
         return new Response.Listener<String>() {
             @Override
             public void onResponse(String responseAsString) {
-//                Response response = null;
-//                try {
-//                    response = (Response) jsonResponse.get("payload");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
 
                 ObjectMapper mapper = new ObjectMapper();
 
                 model.Response response = null;
+
                 try {
                     response = mapper.readValue(responseAsString, model.Response.class);
                 } catch (IOException e) {
@@ -91,9 +73,24 @@ public class ViewAllPeopleActivity extends ListActivity {
                     e.printStackTrace();
                 }
 
-                System.out.println("Retrieved list of Accounts!");
 
-                listItems.add("Clicked : " + clickCounter++);
+                ArrayList<LinkedHashMap<String, String>> accounts =
+                        (ArrayList<LinkedHashMap<String, String>>) response.getPayload();
+
+                for (int i = 0; i < accounts.size(); i++) {
+
+                    LinkedHashMap<String, String> accountMap = accounts.get(i);
+
+                    String userId = accountMap.get("userId");
+                    String challenges = accountMap.get("challengesPending");
+                    if (null == challenges) {
+                        challenges = "none";
+                    }
+                    String entry = "Username: " + userId + "\nChallenges: " + challenges;
+
+                    listItems.add(entry);
+                }
+
                 adapter.notifyDataSetChanged();
 
             }
@@ -104,7 +101,6 @@ public class ViewAllPeopleActivity extends ListActivity {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                view.setText("Error: " + error.getMessage());
                 error.printStackTrace();
             }
         };
