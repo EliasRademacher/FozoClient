@@ -8,9 +8,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -83,9 +83,9 @@ public class ViewAllPeopleActivity extends ListActivity {
 
                 ObjectMapper mapper = new ObjectMapper();
 
-                Response response = null;
+                model.Response response = null;
                 try {
-                    response = mapper.readValue(responseAsString, Response.class);
+                    response = mapper.readValue(responseAsString, model.Response.class);
                 } catch (IOException e) {
                     System.out.println(e.getMessage() + "\n");
                     e.printStackTrace();
