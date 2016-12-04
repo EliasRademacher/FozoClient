@@ -2,12 +2,7 @@ package com.eli.fozoclient;
 
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,13 +12,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
-import model.Person;
 
 public class ViewAllPeopleActivity extends ListActivity {
 
@@ -62,12 +52,18 @@ public class ViewAllPeopleActivity extends ListActivity {
 
 
         /* Request a string response from the provided URL. */
-        StringRequest stringRequest = new StringRequest(
+        StringRequestWithHeaders stringRequest = new StringRequestWithHeaders(
                 Request.Method.GET,
                 url,
                 createResponseListener(),
                 createErrorListener()
         );
+
+        stringRequest.setToken(HeaderKeeper.getInstance().getToken());
+        stringRequest.setUserId(HeaderKeeper.getInstance().getUserId());
+
+        String token = stringRequest.getToken();
+        String userId = stringRequest.getUserId();
 
         queue.add(stringRequest);
     }
@@ -109,7 +105,6 @@ public class ViewAllPeopleActivity extends ListActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 //                view.setText("Error: " + error.getMessage());
-                System.out.println("Error: " + error.toString());
                 error.printStackTrace();
             }
         };

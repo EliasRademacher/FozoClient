@@ -82,6 +82,8 @@ public class LoginActivity extends AppCompatActivity {
     public void authenticateUser(View view) {
         final TextView userIdView = (TextView) findViewById(R.id.userId);
         final String userId = userIdView.getText().toString();
+        HeaderKeeper.getInstance().setUserId(userId);
+
 
         final TextView passwordView = (TextView) findViewById(R.id.password);
         final String password = passwordView.getText().toString();
@@ -126,7 +128,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 view.setText("Response: " + message);
                 startSelectActionActivity();
-
             }
         };
     }

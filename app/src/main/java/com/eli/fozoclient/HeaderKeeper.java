@@ -8,6 +8,7 @@ import java.util.Map;
 public class HeaderKeeper {
     private static HeaderKeeper instance = null;
 
+    String userId;
     Map<String, String> headers;
 
     protected HeaderKeeper() {
@@ -27,5 +28,17 @@ public class HeaderKeeper {
 
     public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
+    }
+
+    public String getToken() {
+        return headers.get("token");
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
