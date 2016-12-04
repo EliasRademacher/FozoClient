@@ -125,6 +125,8 @@ public class LoginActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 view.setText("Response: " + message);
+                startSelectActionActivity();
+
             }
         };
     }
@@ -139,8 +141,13 @@ public class LoginActivity extends AppCompatActivity {
         };
     }
 
-    public void redirectToCreateAccount(View view) {
+    public void startCreateAccountActivity(View view) {
         Intent intent = new Intent(this, CreateAccountActivity.class);
+        this.startActivity(intent);
+    }
+
+    public void startSelectActionActivity() {
+        Intent intent = new Intent(this, SelectActionActivity.class);
         this.startActivity(intent);
     }
 
