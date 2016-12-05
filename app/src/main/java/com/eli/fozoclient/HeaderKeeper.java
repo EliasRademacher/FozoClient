@@ -8,8 +8,8 @@ import java.util.Map;
 public class HeaderKeeper {
     private static HeaderKeeper instance = null;
 
-    String userId;
-    Map<String, String> headers;
+    private String userId;
+    private Map<String, String> headers;
 
     protected HeaderKeeper() {
         // Exists only to defeat instantiation.

@@ -39,7 +39,11 @@ public class JsonObjectRequestWithHeaders extends JsonObjectRequest {
 
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-        HeaderKeeper.getInstance().setHeaders(response.headers);
+
+        HeaderKeeper headerKeeper = HeaderKeeper.getInstance();
+        if (null == headerKeeper.getHeaders() || !headerKeeper.getHeaders().containsKey("token")) {
+            headerKeeper.setHeaders(response.headers);
+        }
 
         if (null == token) {
             token = response.headers.get("token");
