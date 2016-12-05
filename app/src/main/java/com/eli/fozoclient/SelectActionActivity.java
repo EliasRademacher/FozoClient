@@ -18,5 +18,10 @@ public class SelectActionActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    public void startAddChallengeActivity(View view) {
+        Intent intent = new Intent(this, AddChallengeActivity.class);
+        this.startActivity(intent);
+    }
+
 
 }

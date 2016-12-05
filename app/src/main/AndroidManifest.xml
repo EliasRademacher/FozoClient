@@ -20,6 +20,7 @@
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".SelectActionActivity" />
         <activity android:name=".ViewAllPeopleActivity" />
+        <activity android:name=".AddChallengeActivity"></activity>
     </application>
 
 </manifest>

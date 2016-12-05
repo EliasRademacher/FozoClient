@@ -19,16 +19,17 @@
         android:onClick="startViewAllPeopleActivity" />
 
     <Button
+        android:text="Add a Challenge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_challenge"
+        android:onClick="startAddChallengeActivity"/>
+
+    <Button
         android:text="View All Challenges"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/view_all_challenges" />
-
-    <Button
-        android:text="Add a Challenge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/add_challenge" />
 
     <Button
         android:text="View Your Challenges"
